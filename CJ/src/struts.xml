@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="default" extends="json-default">
+
+        <!--登录-->
+        <action name="login" class="action.LoginAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getteacheriob" class="action.GetTeacherJobAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <!--学生-->
+        <action name="getstudentpaper" class="action.GetStudentPaperAction" >
+            <result type="json">
+                <param name="root">result</param>   <!--获取学生所参加过的考试列表-->
+            </result>
+        </action>
+        <action name="StudentGetScore" class="action.StudentGetScoreAction">
+            <result type="json">
+                <param name="root">result</param>   <!--获取该批次的学生成绩-->
+            </result>
+        </action>
+        <action name="StudentGetDetail" class="action.StudentGetDetailAction">
+            <result type="json">
+                <param name="root">result</param>   <!--获取学生选中的成绩细节-->
+            </result>
+        </action>
+        <action name="getphoto" class="action.StudentGetPhotoAction">
+            <result type="json">
+                <param name="root">result</param>    //学生获得成绩变化曲线
+            </result>
+        </action>
+
+        <!--学科组长-->
+        <action name="getschoolyear" class="action.GetSYAndGradeAction" method="getschoolyear">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getgrade" class="action.GetSYAndGradeAction" method="getgrade">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getteachersubject" class="action.GetSubjectAction" method="getTeacherSubject">
+            <result type="json">
+                <param name="root">result</param>   <!--获取教师所教科目-->
+            </result>
+        </action>
+        <action name="getsubject" class="action.GetSubjectAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>   <!--获取所有学科-->
+            </result>
+        </action>
+        <action name="submitexam" class="action.PinJieExamPaperNo">
+            <result>/学科组长/学科组长设置试卷2.jsp</result>    <!--拼接试卷编号-->
+        </action>
+        <action name="InsertPaperDetail" class="action.InsertPaperDetailAction">
+            <result>/学科组长/学科组长设置试卷3.jsp</result>    <!--插入试卷明细-->
+        </action>
+        <action name="getlarge" class="action.GetLargeAction" method="GetLarge">
+            <result type="json">
+                <param name="root">result</param>   <!--获取大题-->
+            </result>
+        </action>
+        <action name="getsmall" class="action.GetSmallAction">
+            <result type="json">
+                <param name="root">result</param>   <!--获取小题-->
+            </result>
+        </action>
+        <action name="InsertLargeAndSmall" class="action.InsertLargeAndSmallAction" method="execute">
+            <result type="json" ></result>  <!--插入大题和小题细节-->
+        </action>
+        <action name="SubjectLeaderGetScore" class="action.SubjectLeaderGetScoreAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>   //学科组长查询成绩
+            </result>
+        </action>
+
+        <!--任课教师-->
+        <action name="insertselectexam" class="action.InsertSelectExamAction">
+            <result type="json">
+                <param name="root">result</param>   <!--选择考试-->
+            </result>
+        </action>
+        <action name="insertselectclass" class="action.InsertSelectClassAction">
+            <result type="json">
+                <param name="root">result</param>   <!--获取所教班级列表-->
+            </result>
+        </action>
+        <action name="setclass" class="action.SetClassAction">
+            <result type="json">
+                <param name="root">result</param>   <!--将所选班级编号放入session中-->
+            </result>
+        </action>
+        <action name="GetScoreTable" class="action.CreateScoreTableAction">
+            <result type="json">
+                <param name="root">result</param>   <!--获取成绩插入表格-->
+            </result>
+        </action>
+        <action name="InsertScore" class="action.InsertScoreAction"  method="execute">
+            <result type="json">
+                <param name="root">result</param>   <!--插入成绩-->
+            </result>
+        </action>
+        <action name="Set0" class="action.Set0Action" method="execute">
+            <result type="json">
+                <param name="root">result</param>   <!--插入成绩后修改该班级成绩0-->
+            </result>
+        </action>
+        <action name="Set1GetClass" class="action.Set1GetClassAndPaperAction" method="getclassno">
+            <result type="json">
+                <param name="root">result</param>   <!--任课教师成绩上传-->
+            </result>
+        </action>
+        <action name="Set1GetPaper" class="action.Set1GetClassAndPaperAction" method="getexampaperno">
+            <result type="json">
+                <param name="root">result</param>   <!--任课教师成绩上传-->
+            </result>
+        </action>
+        <action name="submitscore" class="action.Set1Action" method="execute">
+            <result type="json">
+                <param name="root">resule</param>   <!--任课教师成绩上传-->
+            </result>
+        </action>
+        <action name="TeacherUpdateSelectExam" class="action.TeacherUpdateSelectExamAction">
+            <result type="json">
+                <param name="root">result</param>   <!--成绩修改-->
+            </result>
+        </action>
+        <action name="TeacherUpdateSelectScore" class="action.TeacherUpdateSelectScoreAction">
+            <result type="json">
+                <param name="root">result</param>   //更新查询成绩
+            </result>
+        </action>
+        <action name="UpdateScore" class="action.UpdateScoreAction">
+            <result type="json">
+                <param name="root">result</param>   //更新成绩
+            </result>
+        </action>
+        <action name="SubmitUpdate" class="action.SubmitUpdateAction">
+            <result type="json">
+                <param name="root">result</param>   //发送更新成绩邮件
+            </result>
+        </action>
+        <action name="teachergetclass" class="action.TeacherGetClassAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="courseteachergetscore" class="action.CourseTeacherGetScoreAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="CourseTeacherGetAvg" class="action.CourseTeacherGetAvgAction">
+            <result type="json">
+                <param name="root">result</param>  //任课教师查询班级平均分
+            </result>
+        </action>
+
+        <!--教务员-->
+        <action name="DeanGetSchoolYear" class="action.DeanGetSYAndGradeAction" method="getschoolyear">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="DeanGetGrade" class="action.DeanGetSYAndGradeAction" method="getgrade">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="Set2SelectExam" class="action.Set2SelectExamAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>   <!--查询考试-->
+            </result>
+        </action>
+        <action name="checksubmit" class="action.CheckSubmitAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>   <!--查询为上传成绩的班级名单-->
+            </result>
+        </action>
+        <action name="Set2" class="action.Set2Action" method="execute">
+            <result type="json">
+                <param name="root">result</param>   <!--置该批次的试卷状态为2,并插入考试批次状态表-->
+            </result>
+        </action>
+        <action name="BatchStateSet3SelectExam" class="action.BatchStateSet3SelectExamAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>   <!--发布成绩前获得班级成绩列表-->
+            </result>
+        </action>
+        <action name="BatchStateSet3" class="action.BatchStateSet3Action" method="execute">
+            <result type="json">
+                <param name="root">result</param>   <!--发布成绩并置batchstate为3,学生此时可查成绩-->
+            </result>
+        </action>
+
+        <!--教务主任-->
+        <action name="BatchStateSet2SelectScore" class="action.BatchStateSet2SelectScoreAction">
+            <result type="json">
+                <param name="root">result</param>   //查询教务员上传的成绩
+            </result>
+        </action>
+        <action name="BatchStateSet2" class="action.BatchStateSet2Action">
+            <result type="json">
+                <param name="root">result</param>   //审核成绩后置批次状态为2
+            </result>
+        </action>
+        <action name="GetUpdate" class="action.GetUpdateAction">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="DeanGetSubject" class="action.GetSubjectAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="DeanGetClass" class="action.DeanGetClassAction">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="DeanUpdateSelectExam" class="action.DeanUpdateSelectExam">
+            <result type="json">
+                <param name="root">result</param>   //查询班级和考卷
+            </result>
+        </action>
+
+        <!--班主任-->
+        <action name="getgradebatch" class="action.GetGradeBatchAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>   <!--生成该班所参加的考试批次列表-->
+            </result>
+        </action>
+        <action name="HeadTeacherGetScore" class="action.HeadTeacherGetScoreAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>   <!--班主任获取成绩表-->
+            </result>
+        </action>
+        <action name="HeadTeacherGetAvg" class="action.HeadTeacherGetAvgAction">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <!--年级组长-->
+        <action name="gradeleadergetclass" class="action.GradeLeaderGetClassAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="gradeleadergetscore" class="action.GradeLeaderGetScoreAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="gradeleadergetclassscore" class="action.GradeLeaderGetClassScoreAction" method="execute">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+    </package>
+</struts>
